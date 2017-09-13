@@ -74,7 +74,6 @@ class Configuration implements ConfigurationInterface
     public function getProviderNames(NodeInterface $tree)
     {
         foreach ($tree->getChildren() as $providers) {
-
             if ($providers->getName() !== 'providers') {
                 continue;
             }
@@ -372,6 +371,7 @@ class Configuration implements ConfigurationInterface
             ->addDefaultsIfNotSet()
             ->children()
                 ->scalarNode('connection_id')->defaultNull()->end()
+                ->scalarNode('uri')->defaultNull()->end()
                 ->scalarNode('host')->defaultValue('%doctrine_cache.redis.host%')->end()
                 ->scalarNode('port')->defaultValue('%doctrine_cache.redis.port%')->end()
                 ->scalarNode('password')->defaultNull()->end()
